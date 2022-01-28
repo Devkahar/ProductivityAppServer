@@ -1,0 +1,26 @@
+{
+  "name": "prod-app-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devkahar/ProductivityAppServer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devkahar/ProductivityAppServer/issues"
+  },
+  "homepage": "https://github.com/Devkahar/ProductivityAppServer#readme",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
