@@ -60,8 +60,34 @@ const signIn = async (req, res) => {
     }
 }
 
+const authGoogle = async (req,res)=>{
+    const {email,name} = req.body.profileObj;
+    try {
+        const _user = await User.findOne({email});
+        if(_user){
+            const data = {
+                name: _user.name,
+                email: _user.email,
+                token: generateToken(_user._id),
+            }
+            res.status(201).json({...data});
+        }else{
+            const userCreated = await User.create({email,name,password: ""});
+            if(userCreated){
+                const data = {
+                    name: userCreated.name,
+                    email: userCreated.email,
+                    token: generateToken(userCreated._id),
+                }
+                res.status(201).json({...data});
+            }
+        }
+    } catch (error) {
+        res.status(401).json({errorMeassge: "Something Went Wrong"});
+    }
+}
 
 
 module.exports ={
-    signUp,signIn
+    signUp,signIn,authGoogle,
 }

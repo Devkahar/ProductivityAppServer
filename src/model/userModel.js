@@ -12,7 +12,6 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
     },
     profilePic: {
         type: String,
@@ -27,6 +26,11 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 }
 
 userSchema.pre('save', async function (next) {
+    console.log("--------");
+    if(this.password===""){
+        next();
+        return;
+    }
     if (!this.isModified('password')) {
         next()
     }
