@@ -2,7 +2,6 @@ const User = require('../model/userModel');
 const {validateEmail,validatePassword,generateToken} = require('../helper/authHelper');
 // @desc    Register a new user
 // @route   POST /api/user/signup
-// @access  Public
 const signUp = async (req,res)=>{
     // console.log(req);
     const {firstName,lastName,password,email} = req.body;
@@ -60,12 +59,16 @@ const signIn = async (req, res) => {
     }
 }
 
+// @desc    Register a new user/ SignIn User With Google
+// @route   POST /api/user/googleauth
 const authGoogle = async (req,res)=>{
     const {email,name} = req.body.profileObj;
+    console.log(req.body.profileObj);
     try {
         const _user = await User.findOne({email});
         if(_user){
             const data = {
+                id: _user._id,
                 name: _user.name,
                 email: _user.email,
                 token: generateToken(_user._id),
@@ -75,6 +78,7 @@ const authGoogle = async (req,res)=>{
             const userCreated = await User.create({email,name,password: ""});
             if(userCreated){
                 const data = {
+                    id: _user._id,
                     name: userCreated.name,
                     email: userCreated.email,
                     token: generateToken(userCreated._id),

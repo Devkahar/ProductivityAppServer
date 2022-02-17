@@ -1,13 +1,15 @@
 const jwt = require('jsonwebtoken');
 const signInRequired = (req,res,next)=>{
+    console.log(req.headers.authorization);
     if(req.headers.authorization && req.headers.authorization.split(' ')[1]){
         const token = req.headers.authorization.split(' ')[1];
+        console.log("token ",token);
         jwt.verify(token,process.env.JWT_SECRET,(err, user) => {
             if(err){
                 const sigoutRequired = true;
                 res.status(401).json({sigoutRequired});
             }else{
-                req.user = user;
+                req.body._id = user.id;
                 next();
             }
         });

@@ -15,7 +15,15 @@ const userSchema = mongoose.Schema({
     },
     profilePic: {
         type: String,
-    }
+    },
+    userToDo:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Todo'
+        }
+
+    ]
 }, {
     timestamps: true,
 })
@@ -26,7 +34,6 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 }
 
 userSchema.pre('save', async function (next) {
-    console.log("--------");
     if(this.password===""){
         next();
         return;

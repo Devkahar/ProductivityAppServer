@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const dotenv = require('dotenv');
 const authRoutes  = require('./route/authRoute');
+const todoRoute = require('./route/todoRoute');
 const cors = require('cors');
 dotenv.config();
 const {connectDB} = require('./db/index');
@@ -14,6 +15,7 @@ app.get('/hello/',(req,res)=>{
 })
 
 app.use('/api',authRoutes);
+app.use('/api',todoRoute);
 app.listen(PORT,()=>{
     console.log("Server is listening on port " + PORT);
 });
