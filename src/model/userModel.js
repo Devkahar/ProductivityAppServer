@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
         unique: true,
         required: true,
     },
-    name: {
+    name:{
         type: String,
         required: true,
     },
@@ -22,7 +22,6 @@ const userSchema = mongoose.Schema({
             required: true,
             ref: 'Todo'
         }
-
     ]
 }, {
     timestamps: true,

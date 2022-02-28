@@ -13,7 +13,6 @@ connectDB();
 app.get('/hello/',(req,res)=>{
     res.send("Hello Dev Here")
 })
-
 app.use('/api',authRoutes);
 app.use('/api',todoRoute);
 app.listen(PORT,()=>{

@@ -7,7 +7,7 @@ const createToDo = async (req, res) => {
     try {
         const {_id,listData,date} = req.body;
         listData.map(el => {
-            const data = new Todo(el.tasks,el.type)
+            const data = new Todo(el.tasks,el.type);
             return data;
         });
         const _newToDo = new TodoModel({user:_id,todo:listData,date});
@@ -25,6 +25,11 @@ const createToDo = async (req, res) => {
     }
 
 }
+const updateToDo ={
+
+}
+
 module.exports ={
     createToDo,
+    updateToDo,
 }
