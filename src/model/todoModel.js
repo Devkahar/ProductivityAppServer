@@ -16,7 +16,7 @@ const todoSchema = mongoose.Schema({
             tasks:[{
                 taskType:{
                     type: String,
-                    enum: ['link','text','meetingLink','problem',"video"],
+                    enum: ['link','text','meetingLink','problem','video'],
                     default: 'text',
                 },
                 time: {
