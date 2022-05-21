@@ -10,16 +10,11 @@ const todoSchema = mongoose.Schema({
         {
             todoType: {
                 type: String,
-                enum: ['programmer', 'GYM','general','student'],
+                enum: ['programmer', 'GYM','general','student','project','meetings','contest'],
                 default: 'general',
             },
             tasks:[{
-                taskType:{
-                    type: String,
-                    enum: ['link','text','meetingLink','problem','video'],
-                    default: 'text',
-                },
-                time: {
+                name:{
                     type: String,
                 },
                 priority: {
@@ -28,10 +23,18 @@ const todoSchema = mongoose.Schema({
                 link: {
                     type: String,
                 },
-                status: {
+                startTime:{
                     type: String,
                 },
-
+                websiteName:{
+                    type: String,
+                },
+                duration:{
+                    type: String,
+                },
+                status:{
+                    type: Boolean,
+                }
             }]
         }
     ],

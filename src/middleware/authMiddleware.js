@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const signInRequired = (req,res,next)=>{
-    console.log(req.headers.authorization);
+    console.log("We are here ",req.headers.authorization);
     if(req.headers.authorization && req.headers.authorization.split(' ')[1]){
         const token = req.headers.authorization.split(' ')[1];
         console.log("token ",token);
@@ -15,6 +15,7 @@ const signInRequired = (req,res,next)=>{
         });
     }
     else{
+        console.log("Fucked");
         return res.status(500).json({
             message: "Auth required"
         })
